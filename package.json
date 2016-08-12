@@ -9,10 +9,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.15.0",
-    "express": "^4.13.4",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "node-telegram-bot-api": "^0.23.3",
-    "request": "^2.71.0",
-    "requestify": "^0.1.17"
+    "request": "^2.74.0",
+    "requestify": "^0.1.17",
+    "slackbots": "^0.5.2"
   }
 }
