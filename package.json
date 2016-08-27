@@ -11,6 +11,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "node-slackr": "^0.1.4",
     "node-telegram-bot-api": "^0.23.3",
     "request": "^2.74.0",
     "requestify": "^0.1.17",
