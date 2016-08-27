@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 // recommended to inject access tokens as environmental variables, e.g.
 var token = process.env.FB_PAGE_ACCESS_TOKEN;
 var telegramToken = process.env.TELEGRAM_ACCESS_TOKEN;
+var slack_webhook_url = process.env.SLACK_WEBHOOK_URL;
 // Setup polling way
 var bot = new TelegramBot(telegramToken, {polling: true});
 // const token = "<PAGE_ACCESS_TOKEN>"
@@ -27,7 +28,7 @@ var slack_bot = new SlackBot({
 	name: 'susi'
 })
 var payload;
-var slack = new Slack(process.env.SLACK_WEBHOOK_URL);
+var slack = new Slack(slack_webhook_url);
 
 // FACEBOOK SERVICE FOR SUSI
 // ----------------------------------------------------------------------------------------------------------------
