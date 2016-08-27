@@ -8,7 +8,7 @@ var app = express();
 
 var TelegramBot = require('node-telegram-bot-api');
 var SlackBot = require('slackbots');
-
+var Slack = require('node-slackr')
 app.set('port', (process.env.PORT || 5000));
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -26,6 +26,8 @@ var slack_bot = new SlackBot({
 	token: slack_token, 
 	name: 'susi'
 })
+var payload;
+var slack = new Slack(process.env.SLACK_WEBHOOK_URL);
 
 // FACEBOOK SERVICE FOR SUSI
 // ----------------------------------------------------------------------------------------------------------------
@@ -168,43 +170,57 @@ bot.on('message', function (msg) {
 	}
 });
 
-// SLACK SERVICE FOR SUSI
-// ----------------------------------------------------------------------------------------------------------------
-
-slack_bot.on('message', function(data){
-	var slackdata = data;
-	var msg, channel, output, user;
-	if(Object.keys(slackdata).length > 0){
-		if('text' in slackdata && slackdata['username'] != 'susi'){
-			msg = data['text'];
-			channel = data['channel']
+//SLACK SERVICE FOR SUSI
+//-----------------------------------------------------------------------------------------------------------------
+function slackbot(){
+	slack_bot.on('message', function(data){
+		var slackdata = data;
+		var msg, channel, output, user;
+		if(Object.keys(slackdata).length > 0){
+			if('text' in slackdata && slackdata['username'] != 'susi'){
+				msg = data['text'];
+				channel = data['channel']
+			}
+			else {
+				msg = null;
+				channel = null;
+			}
 		}
-		else {
-			msg = null;
-			channel = null;
-		}
-	}
-	if(msg != null && channel !=null){
-		var botid = '<@U1UK6DANT>:' 
-		if (msg.split(" ")[0] != botid){
+		if(msg != null && channel !=null){
+			var botid = '<@U1UK6DANT>:' 
+			if (msg.split(" ")[0] != botid){
 			//do nothing
 		} else{
 			var apiurl = 'http://loklak.org/api/susi.json?q=' + msg;
+			var payload;
 			request(apiurl, function (error, response, body) {
 				if (!error && response.statusCode === 200) {
 					var data = JSON.parse(body);
 					if(data.answers[0].actions.length == 1){
 						var susiresponse = data.answers[0].actions[0].expression;
-						slack_bot.postMessage(channel, susiresponse);
+						payload = {
+							text: susiresponse,
+							channel: channel
+						}
+						slack.notify(payload)
+
 					} else if(data.answers[0].actions.length == 2 && data.answers[0].actions[1].type == "table"){
-						slack_bot.postMessage(channel, data.answers[0].actions[0].expression + " (" + data.answers[0].data.length + " results)");
+						payload = {
+							text: data.answers[0].actions[0].expression + " (" + data.answers[0].data.length + " results)",
+							channel: channel
+						}
+						slack.notify(payload)
 						for(var i = 0; i < data.answers[0].data.length; ++i){
 							var response = data.answers[0].data[i];
 							var ansstring = "";
 							for(var resp in response){
 								ansstring += (resp + ": " + response[resp] + ", ");
 							}
-							slack_bot.postMessage(channel, ansstring);
+							payload = {
+								text: ansstring,
+								channel: channel
+							}
+							slack.notify(payload);
 						}
 					}
 				}
@@ -212,8 +228,9 @@ slack_bot.on('message', function(data){
 		}
 	}
 });
-
+}
 // Getting Susi up and running.
 app.listen(app.get('port'), function() {
 	console.log('running on port', app.get('port'));
+	slackbot();
 });
