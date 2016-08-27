@@ -3,7 +3,6 @@
 [![Code Climate](https://codeclimate.com/github/fossasia/asksusi_messengers/badges/gpa.svg)](https://codeclimate.com/github/fossasia/asksusi_messengers)
 [![Build Status](https://travis-ci.org/fossasia/asksusi_messengers.svg?branch=development)](https://travis-ci.org/fossasia/asksusi_messengers)
 [![CircleCI](https://img.shields.io/circleci/project/fossasia/asksusi_messengers.svg?maxAge=2592000?style=flat-square)](https://circleci.com/gh/fossasia/asksusi_messengers)
-<a href="https://slack.com/oauth/authorize?scope=bot&client_id=62652302743.69257872898"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
 
 This is the common repository for the AskSusi chatbots on Social Media platforms. As of now, we have integrated AskSusi on Facebook Messenger, Slack and Telegram.
 
