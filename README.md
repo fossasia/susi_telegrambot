@@ -1,5 +1,4 @@
-# asksusi_messenger
-Ask Susi Messengers
+# AskSusi Messengers
 
 [![Code Climate](https://codeclimate.com/github/fossasia/asksusi_messengers/badges/gpa.svg)](https://codeclimate.com/github/fossasia/asksusi_messengers)
 [![Build Status](https://travis-ci.org/fossasia/asksusi_messengers.svg?branch=development)](https://travis-ci.org/fossasia/asksusi_messengers)
