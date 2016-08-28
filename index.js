@@ -4,11 +4,12 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
-var app = express();
-
+var http = require("http");
 var TelegramBot = require('node-telegram-bot-api');
 var SlackBot = require('slackbots');
 var Slack = require('node-slackr')
+
+var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -18,7 +19,8 @@ app.use(bodyParser.json());
 // recommended to inject access tokens as environmental variables, e.g.
 var token = process.env.FB_PAGE_ACCESS_TOKEN;
 var telegramToken = process.env.TELEGRAM_ACCESS_TOKEN;
-var slack_webhook_url = process.env.SLACK_WEBHOOK_URL;
+var slack_webhook_url = process.env.SLACK_WEBHOOK_URL; //url of incoming webhook
+var heroku_deploy_url = (process.env.HEROKU_URL)||("https://damp-everglades-14739.herokuapp.com/"); //url of heroku deployment
 // Setup polling way
 var bot = new TelegramBot(telegramToken, {polling: true});
 // const token = "<PAGE_ACCESS_TOKEN>"
@@ -174,6 +176,11 @@ bot.on('message', function (msg) {
 //SLACK SERVICE FOR SUSI
 //-----------------------------------------------------------------------------------------------------------------
 function slackbot(){
+
+	setInterval(function() {
+		http.get(heroku_deploy_url);
+	}, 1800000); //pings the deployment url every 30 minutes
+
 	slack_bot.on('message', function(data){
 		var slackdata = data;
 		var msg, channel, output, user;
