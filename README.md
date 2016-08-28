@@ -45,6 +45,15 @@ Susi's Telegram Bot can be found [here](https://web.telegram.org/#/im?p=@asksusi
 
 ![alt text](http://i.imgur.com/WXnSiGl.png "Susi Telegram")
 
+Consuming the Susi API with telegram is fairly straightforward in telegram. The use of `botfather` in telegram ensures that the bots can be created with ease. So the first step is to login into telegram with your user account and search and talk to `BotFather`. Bot father would ask a few questions and then provide the required token. You need to save this token and the bot powered by susi is now available.
+
+![Bot Father 1](/images/botfather1.png)
+
+![Bot Father 2](/images/botfather2.png)
+
+Once this is set, you need to update the token using heroku as follows
+`heroku config:set TELEGRAM_ACCESS_TOKEN=AVERYLONGTOKEN:GOESOVERHEREFORYOUTORUNSUSIONTELEGRAM`
+
 ## Contributions
 
 We are currently adding more bots. Please help us expand Susi on other Social Media platforms. A list of platforms we aim to integrate Susi on can be seen [here](https://github.com/fossasia/asksusi_messengers/issues/1). You can propose and make Susi bots on other platforms too as you like.
