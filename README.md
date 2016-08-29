@@ -6,13 +6,15 @@
 
 AskSusi is a messenger bot that answers your question by using big data from loklak and a number of API services. In this we keep AskSusi chatbots for social media platforms. We have integrated AskSusi on Facebook Messenger, Slack and Telegram. All of the messenger bots work from one central ```index.js``` file, and run from one URL (with different paths). The type of questions Susi can currently answer can be found in the [loklak documentation here](https://github.com/loklak/loklak_server/blob/development/docs/AskSUSI.md). 
 
-### Messenger Bot for Susi
+## AskSusi Messengers
+
+### Facebook Bot for Susi
 
 A live version of Susi's Messenger bot can be found on [facebook.com/asksusisu/](https://www.facebook.com/asksusisu/). Personal Message the page to speak to Susi.
 
 ![Susi Messenger](docs/images/messenger_screenshot.png "Susi Messenger")
 
-### How do I install AskSusi on Facebook
+#### How do I install AskSusi on Facebook
 
 For making your own Messenger Bot for Susi, you can check out the [Installation document](/docs/INSTALLATION_FACEBOOK.md).
 
@@ -22,7 +24,7 @@ You can directly talk to Susi using the ```Add to Susi``` button above. Click on
 
 ![Susi Slack](docs/images/slack_screenshot.png "Susi Slack")
 
-### How do I install AskSuSi on Slack
+#### How do I install AskSuSi on Slack
 
 For making your own Slack Bot for Susi, you can check out the [Installation document](/docs/INSTALLATION_SLACK.md).
 
@@ -34,7 +36,7 @@ A live version of Susi's Telegram Bot can be found at [web.telegram.org/#/im?p=@
 
 ![Susi Telegram](docs/images/telegram_screenshot.png "Susi Telegram")
 
-### How do I install AskSusi on Telegram
+#### How do I install AskSusi on Telegram
 
 For making your own Telegram Bot for Susi, you can check out the [Installation document](/docs/INSTALLATION_TELEGRAM.md).
 
