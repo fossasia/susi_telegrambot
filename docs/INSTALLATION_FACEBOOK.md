@@ -8,7 +8,7 @@ Messenger bots uses a web server to process messages it receives or to figure ou
 
 1. Create or configure a Facebook App or Page here https://developers.facebook.com/apps/
 2. In the app go to Messenger tab then click Setup Webhook. Here you will put in the URL of your Heroku server and a token. Make sure to check all the subscription fields. 
-![FB Settings](docs/images/fb_settings.png)
+![FB Settings](/docs/images/fb_settings.png)
 3. Get a Page Access Token and save this somewhere. 
 4. Go back to Terminal and type in this command to trigger the Facebbook app to send messages. Remember to use the token you requested earlier.
 
