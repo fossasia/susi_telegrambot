@@ -24,9 +24,9 @@ You can directly talk to Susi using the ```Add to Susi``` button above. Click on
 
 ![Susi Slack](docs/images/slack_screenshot.png "Susi Slack")
 
-#### How do I install AskSuSi on Slack
+#### How do I install AskSusi on Slack
 
-For making your own Slack Bot for Susi, please check out the [Installation document](/docs/INSTALLATION_SLACK.md).
+For making your own Slack Bot for Susi, please check out the [Installation document](/docs/INSTALLATION_SLACK.md). Or you can directly deploy AskSusi onto your team by clicking on the ```Add to Slack``` button below.
 
 <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,bot&client_id=62652302743.69257872898"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
 
@@ -58,11 +58,11 @@ and then write your code below it.
 
 	```npm install --save <package>```
 
-* Add the installation / deployment instructions for your bot in the ```installation_docs``` folder, in a ```.md``` file. Keep the filename as ```<botplatform>.md```. You should write how to setup such a bot on your platform, and how to make it consume the Susi API. To get a better idea, you can check the instructions of the other docs [here](/installation_docs).
+* Add the installation / deployment instructions for your bot in the ```installation_docs``` folder, in a ```.md``` file. Keep the filename as ```INSTALLATION_<botplatform>.md```. You should write how to setup such a bot on your platform, and how to make it consume the Susi API. To get a better idea, you can check the instructions of the other docs [here](/installation_docs).
 
 * Add a screenshot of your working bot, along with usage (i.e message format) in the ```README.md```. Also write that the installation instructions of your bot can be found at ```<link to your installation documentation>```.
 
-* Finally, send a **single**, **squashed** PR containing all these changes. Please send your PRs to the ```development``` branch as mentioned earlier.
+* Finally, send a **single**, **squashed** PR containing all these changes. Please send your PRs to the ```development``` branch.
 
 ## Branch Policy
 
