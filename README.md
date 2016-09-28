@@ -10,7 +10,7 @@ This is the Telegram bot for [AskSusi](https://github.com/fossasia/susi_server).
 
 To set up your own Telegram Bot for Susi, please check out the [Installation document](/docs/INSTALLATION_TELEGRAM.md).
 
-![Susi Messenger](docs/images/telegram_screenshot.png "Susi Messenger")
+![Susi Telegram](docs/images/telegram_screenshot.png "Susi Telegram")
 
 ## Technology Stack
 
