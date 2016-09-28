@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/sample.js"
+    "test": "node tests/sample.js && codecov"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "codecov": "^1.0.1",
     "express": "^4.14.0",
     "node-telegram-bot-api": "^0.23.3",
     "request": "^2.74.0",
