@@ -1,12 +1,13 @@
-var request = require('request');
+var request = require("request")
 
-var queryUrl = 'http://localhost:9000/api/susi.json?q=Hi I am Sudheesh';
+var url = "http://api.asksusi.com/susi/chat.json?q=Hi I am Sudheesh"
 
 request({
-	url: queryUrl,
-	json: true
+    url: url,
+    json: true
 }, function (error, response, body) {
-	if (!error && response.statusCode === 200) {
-		return body.answers[0].actions[0].expression;
-	}
-});
+
+    if (!error && response.statusCode === 200) {
+        console.log(body.answers[0].actions[0].expression); // Print the json response
+    }
+})

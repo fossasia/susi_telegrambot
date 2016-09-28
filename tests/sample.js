@@ -1,6 +1,6 @@
 var request = require("request")
 
-var url = "http://localhost:9000/api/susi.json?q=Hi I am Sudheesh"
+var url = "http://api.asksusi.com/susi/chat.json?q=Hi I am Sudheesh"
 
 request({
     url: url,
