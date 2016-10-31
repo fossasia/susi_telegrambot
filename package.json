@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/sample.js && codecov"
+    "test": "node tests/sample.js"
   },
   "author": "",
   "license": "MIT",
