@@ -45,7 +45,10 @@ bot.on('message', function (msg) {
 				if(body.answers[0].actions.length == 3 &&  body.answers[0].actions[2].type == "map" ){
 					var latitude = body.answers[0].actions[2].latitude;
 					var longitude = body.answers[0].actions[2].longitude;
-					bot.sendLocation(chatId,latitude,longitude);
+					bot.sendMessage(chatId, message);
+					setTimeout(function(){
+						bot.sendLocation(chatId,latitude,longitude);
+					}, 1000);
 				}
 				else if(isURL(message) && message.includes("jpg")){
 					bot.sendPhoto(chatId, message);
