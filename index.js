@@ -42,7 +42,17 @@ bot.on('message', function (msg) {
 		}, function (error, response, body) {
 			if (!error && response.statusCode === 200) {
 				message = body.answers[0].actions[0].expression;
-				bot.sendMessage(chatId, message);
+				if(body.answers[0].actions.length == 3 &&  body.answers[0].actions[2].type == "map" ){
+					var latitude = body.answers[0].actions[2].latitude;
+					var longitude = body.answers[0].actions[2].longitude;
+					bot.sendLocation(chatId,latitude,longitude);
+				}
+				else if(isURL(message) && message.includes("jpg")){
+					bot.sendPhoto(chatId, message);
+				}else {
+					bot.sendMessage(chatId, message);
+				}
+				
 			} else {
 				message = 'Oops, Looks like Susi is taking a break, She will be back soon';
 				bot.sendMessage(chatId, message);
@@ -51,7 +61,18 @@ bot.on('message', function (msg) {
 	}
 });
 
+function isURL(str) {
+  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
+  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+  return pattern.test(str);
+}
+
 // Getting Susi up and running.
 app.listen(app.get('port'), function() {
 	console.log('running on port', app.get('port'));
 });
+
