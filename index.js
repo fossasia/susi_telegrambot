@@ -19,6 +19,11 @@ var telegramToken = process.env.TELEGRAM_ACCESS_TOKEN;
 // Setup polling way
 var bot = new TelegramBot(telegramToken, {polling: true});
 
+//To ping heroku app to prevent from sleeping
+setInterval(function() {
+http.get(process.env.HerokuURL);
+},1200000);
+
 app.get('/', function (req, res) {
 	res.send('Susi says Hello.');
 });
