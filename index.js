@@ -46,21 +46,32 @@ bot.on('message', function (msg) {
 			json: true
 		}, function (error, response, body) {
 			if (!error && response.statusCode === 200) {
+				var type = body.answers[0].actions;
 				message = body.answers[0].actions[0].expression;
-				if(body.answers[0].actions.length == 3 &&  body.answers[0].actions[2].type == "map" ){
+				if(type.length == 3 &&  type[2].type == "map" ){
 					var latitude = body.answers[0].actions[2].latitude;
 					var longitude = body.answers[0].actions[2].longitude;
 					bot.sendMessage(chatId, message);
 					setTimeout(function(){
 						bot.sendLocation(chatId,latitude,longitude);
 					}, 1000);
-				}
-				else if(isURL(message) && message.includes("jpg")){
-					bot.sendPhoto(chatId, message);
+				}else if(type.length == 1 && type[0].type == "table"){
+					var data = body.answers[0].data;
+					var columns = type[0].columns;
+					var key = Object.keys(columns);
+					var msg;
+
+					for(var i = 0; i < 10; i++){
+						msg ="";
+						msg = key[0]+": "+data[i][key[0]]+"\n"+key[1]+": "+data[i][key[1]]+"\n"+key[2]+": "+data[i][key[2]];
+						bot.sendMessage(chatId, msg);
+					}
+
+
 				}else {
 					bot.sendMessage(chatId, message);
 				}
-				
+
 			} else {
 				message = 'Oops, Looks like Susi is taking a break, She will be back soon';
 				bot.sendMessage(chatId, message);
@@ -69,18 +80,7 @@ bot.on('message', function (msg) {
 	}
 });
 
-function isURL(str) {
-  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
-  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-  return pattern.test(str);
-}
-
 // Getting Susi up and running.
 app.listen(app.get('port'), function() {
 	console.log('running on port', app.get('port'));
 });
-
