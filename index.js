@@ -55,7 +55,7 @@ bot.on('message', function (msg) {
 					setTimeout(function(){
 						bot.sendLocation(chatId,latitude,longitude);
 					}, 1000);
-				}else if(type.length == 1 && type[0].type == "table"){
+				} else if(type.length == 1 && type[0].type == "table"){
 					var data = body.answers[0].data;
 					var columns = type[0].columns;
 					var key = Object.keys(columns);
@@ -66,9 +66,21 @@ bot.on('message', function (msg) {
 						msg = key[0]+": "+data[i][key[0]]+"\n"+key[1]+": "+data[i][key[1]]+"\n"+key[2]+": "+data[i][key[2]];
 						bot.sendMessage(chatId, msg);
 					}
+				} else if (type.length == 2 && type[1].type == "rss"){
+          var data = body.answers[0].data;
+          var columns = type[1];
+          var key = Object.keys(columns);
+          var msg = [];
 
-
-				}else {
+					bot.sendMessage(chatId, message);
+					setTimeout(function(){
+          for (var i = 1; i < 4; i++) {
+							msg = "";
+              msg = key[1].toUpperCase() + ": " + data[i][key[1]] + "\n" + key[2].toUpperCase() + ": " + data[i][key[2]] + "\n" + key[3].toUpperCase() + ": " + data[i][key[3]];
+							bot.sendMessage(chatId, msg);
+          }
+					}, 1000);
+				} else {
 					bot.sendMessage(chatId, message);
 				}
 
