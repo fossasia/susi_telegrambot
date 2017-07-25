@@ -60,8 +60,9 @@ bot.on('message', function (msg) {
 					var columns = type[0].columns;
 					var key = Object.keys(columns);
 					var msg;
+					var count = body.answers[0].metadata.count;
 
-					for(var i = 0; i < 10; i++){
+					for(var i = 0; i < count; i++){
 						msg ="";
 						msg = key[0]+": "+data[i][key[0]]+"\n"+key[1]+": "+data[i][key[1]]+"\n"+key[2]+": "+data[i][key[2]];
 						bot.sendMessage(chatId, msg);
