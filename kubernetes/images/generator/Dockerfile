@@ -6,7 +6,7 @@ ARG REPOSITORY
 
 ENV COMMIT_HASH ${COMMIT_HASH:-null}
 ENV BRANCH ${BRANCH:-development}
-ENV REPOSITORY ${REPOSITORY:-https://github.com/AliAyub007/susi_telegrambot.git}
+ENV REPOSITORY ${REPOSITORY:-https://github.com/fossasia/susi_telegrambot.git}
 ENV INSTALL_PATH /telegram
 
 RUN mkdir -p $INSTALL_PATH
