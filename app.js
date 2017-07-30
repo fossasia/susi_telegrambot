@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // recommended to inject access tokens as environmental variables, e.g.
-var telegramToken = '387216373:AAFQ0k2pX4JmpoERyUNEIQ5Yk0hW1h0as74';
+var telegramToken = process.env.token || config.token;
 // Setup polling way
 var bot = new TelegramBot(telegramToken, {polling: true});
 
