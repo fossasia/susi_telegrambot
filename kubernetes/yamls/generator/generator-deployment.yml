@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: susi-telegrambot
-        image: aliayubkhan/susi_telegrambot:latest
+        image: aliayubkhan/susi_telegrambot:latest-development
         ports:
         - containerPort: 8080
           protocol: TCP
