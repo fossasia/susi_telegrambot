@@ -8,14 +8,14 @@ var http = require("http");
 var TelegramBot = require('node-telegram-bot-api');
 
 var app = express();
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 8080));
 
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(bodyParser.json());
 
 // recommended to inject access tokens as environmental variables, e.g.
-var telegramToken = process.env.TELEGRAM_ACCESS_TOKEN;
+var telegramToken = process.env.token || config.token;
 // Setup polling way
 var bot = new TelegramBot(telegramToken, {polling: true});
 

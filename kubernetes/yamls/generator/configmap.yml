@@ -1,0 +1,7 @@
+apiVersion: v1
+metadata:
+  name: susi-telegrambot
+  namespace: web
+data:
+  token: "XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+kind: ConfigMap
