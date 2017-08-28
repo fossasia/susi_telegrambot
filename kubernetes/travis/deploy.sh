@@ -21,10 +21,10 @@ gcloud components install kubectl
 
 echo ">>> Decrypting credentials and authenticating gcloud account"
 gcloud config set compute/zone us-central1-b
-openssl aes-256-cbc -K $encrypted_2f15b474e042_key -iv $encrypted_2f15b474e042_iv -in ./kubernetes/travis/susi-telegrambot-e467bca1e540.json.enc -out susi-telegrambot-e467bca1e540.json -d
+openssl aes-256-cbc -K $encrypted_2f15b474e042_key -iv $encrypted_2f15b474e042_iv -in ./kubernetes/travis/susi-telegrambot-85cf0ec296e9.json.enc -out susi-telegrambot-85cf0ec296e9.json -d
 mkdir -p lib
-gcloud auth activate-service-account --key-file susi-telegrambot-e467bca1e540.json
-export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/susi-telegrambot-e467bca1e540.json
+gcloud auth activate-service-account --key-file susi-telegrambot-85cf0ec296e9.json
+export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/susi-telegrambot-85cf0ec296e9.json
 gcloud config set project susi-telegrambot
 gcloud container clusters get-credentials bots
 echo ">>> Building Docker image"
