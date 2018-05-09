@@ -37,7 +37,7 @@ bot.onText(/\/start/, function (msg, match) {
 // Any other message
 bot.on('message', function (msg) {
 	var chatId = msg.chat.id;
-	var queryUrl = 'http://api.asksusi.com/susi/chat.json?q='+encodeURI(msg.text);
+	var queryUrl = 'http://api.susi.ai/susi/chat.json?q='+encodeURI(msg.text);
 	var message = '';
 	// Wait until done and reply
 	if (msg.text !== '/start') {
